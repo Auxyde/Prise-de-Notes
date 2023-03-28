@@ -2,24 +2,37 @@ import Header from "../Header";
 import Footer from "../Footer";
 
 function Inscription() {
-
     return (
         <div>
-            <Header/>
-            <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In venenatis volutpat urna at molestie. Vivamus
-                fermentum imperdiet nisl eget efficitur. Ut et magna convallis, interdum nisi et, ultrices erat. Vestibulum
-                et neque nisi. Aliquam pulvinar lorem dolor, ornare posuere odio lobortis eu. Class aptent taciti sociosqu
-                ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris viverra justo eu justo convallis
-                porttitor vel elementum justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                cubilia curae; Integer nec libero eget mi efficitur sodales. Class aptent taciti sociosqu ad litora torquent
-                per conubia nostra, per inceptos himenaeos. In gravida pellentesque ligula, non maximus augue venenatis et.
-                Integer rutrum nisi nec libero commodo, quis interdum dolor interdum. Maecenas porttitor rutrum tristique.
-                Vivamus in ligula et magna tristique suscipit.
+            <Header />
+            <div className="signup-block">
+                <h2>Inscription</h2>
+                <form className="forminscription">
+                    <div className="form-group">
+                        <label htmlFor="nom">Nom :</label>
+                        <input type="text" id="nom" name="nom" placeholder="Nom" required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="prenom">Prénom :</label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Prénom" required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Mail :</label>
+                        <input type="email" id="email" name="email" placeholder="Mail" required />
+                    </div>
+                    <div className="form-group" id="password-group">
+                        <label htmlFor="password">Mot de passe :</label>
+                        <input type="password" id="password" name="password" placeholder="Mot de passe" required />
+                    </div>
+                    <button type="submit">S'inscrire</button>
+                    <div className="login-link">
+                        <a href="/connexion" style={{ color: "#f5ba13" }}>J'ai déjà un compte</a>
+                    </div>
+                </form>
             </div>
-            <Footer/>
+            <Footer />
         </div>
-    )
-};
+    );
+}
 
 export default Inscription;
