@@ -126,3 +126,51 @@ header {
   margin-left: 10px;
   text-decoration: none;
 }
+
+.login-block {
+  max-width: 25%;
+  margin: 0 auto;
+}
+
+#password-group {
+  margin-bottom: 20px;
+}
+
+.login-block label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-block input[type="email"],
+.login-block input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.login-block button[type="submit"] {
+  background-color: #f5ba13;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.login-block h2 {
+  text-align: center;
+}
+
+
+.signup-link a {
+  color: #f5ba13;
+  font-size: 14px;
+}
+
+.formconnexion {
+  background-color: white;
+  padding: 20px;
+}
