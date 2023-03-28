@@ -5,6 +5,7 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 function App() {
 
+    const [isConnected, setIsConnected] = useState(false);
     const [Notes, setNotes] = useState([]);
 
     //Au chargement, on prend les données déjà stockées
@@ -31,9 +32,14 @@ function App() {
             return oldNotes.filter((item, index) => index !== itemId);
         });
     }
+
+    function connection() {
+        setIsConnected(!isConnected);
+    }
+
     return (
         <div>
-            <Header/>
+            <Header connection = {isConnected} connexionFct={connection}/>
             <CreateArea onAdd={addNote}/>
             {Notes.map((note, index) => {
                 return (
@@ -46,6 +52,9 @@ function App() {
                     />
                 );
             })}
+            <button className="button" onClick={connection}>
+                Connexion
+            </button>
             <Footer/>
         </div>
     )
