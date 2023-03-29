@@ -7,8 +7,8 @@ function Connexion() {
     return (
         <div>
             <Header/>
+            <h2 className="connexion">Connexion</h2>
             <div className="login-block">
-                <h2>Connexion</h2>
                 <form className="formconnexion">
                     <div className="form-group">
                         <label htmlFor="email">Mail :</label>

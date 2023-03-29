@@ -12,11 +12,11 @@ function Inscription() {
                         <label htmlFor="nom">Nom :</label>
                         <input type="text" id="nom" name="nom" placeholder="Nom" required />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" id="prenom-group">
                         <label htmlFor="prenom">Prénom :</label>
                         <input type="text" id="prenom" name="prenom" placeholder="Prénom" required />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" id="email-group">
                         <label htmlFor="email">Mail :</label>
                         <input type="email" id="email" name="email" placeholder="Mail" required />
                     </div>

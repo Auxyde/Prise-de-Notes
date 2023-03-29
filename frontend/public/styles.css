@@ -127,15 +127,25 @@ header {
   text-decoration: none;
 }
 
+.connexion {
+  text-align: center;
+}
+
 .login-block {
   max-width: 25%;
   margin: 0 auto;
-
 }
 
 #password-group {
+  padding-top: 20px;
   margin-bottom: 20px;
 }
+
+#prenom-group,
+#email-group{
+  padding-top: 20px;
+}
+
 
 .login-block label {
   display: block;
@@ -360,3 +370,4 @@ hr {
 p.nbarticle{
   color: #f5ba13;
 }
+
