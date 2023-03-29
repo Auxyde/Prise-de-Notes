@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+router.use(["/note", "/notes"], require("./routes/note"));
 router.use(["/user", "/users"], require("./routes/user"));
 module.exports = router;
 
