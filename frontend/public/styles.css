@@ -322,3 +322,34 @@ h1.Authorstitle {
 h3 {
   margin-bottom: 20px;
 }
+
+.user-info-block {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1.Authorstitle {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+h2,
+h3 {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+a.informationlink {
+  margin-left: 10px;
+}
