@@ -18,43 +18,42 @@ function CreateArea(props) {
   //on surveille le remplissage du formulaire
   useEffect(() => {
     setExpanded(Note.title.replace(/\s/g, ""));
-
     setAddAllowed(Note.content.replace(/\s/g, ""));
   }, [Note]);
 
   return (
-    <div>
-      <form className="create-note">
-        <input
-          name="title"
-          placeholder="Titre"
-          value={Note.title}
-          onChange={objChange}
-        />
-
-        {isExpanded && (
-          <textarea
-            name="content"
-            placeholder="Contenu..."
-            onChange={objChange}
-            rows={isExpanded ? 3 : 1}
-            value={Note.content}
+      <div>
+        <form className="create-note">
+          <input
+              name="title"
+              placeholder="Titre"
+              value={Note.title}
+              onChange={objChange}
           />
-        )}
 
-        {addAllowed && (
-          <button
-            onClick={(event) => {
-              event.preventDefault(true);
-              props.onAdd(Note);
-              setNote(defaultNote);
-            }}
-          >
-            <AddIcon />
-          </button>
-        )}
-      </form>
-    </div>
+          {isExpanded && (
+              <textarea
+                  name="content"
+                  placeholder="Contenu..."
+                  onChange={objChange}
+                  rows={isExpanded ? 3 : 1}
+                  value={Note.content}
+              />
+          )}
+
+          {addAllowed && (
+              <button
+                  onClick={(event) => {
+                    event.preventDefault(true);
+                    props.onAdd(Note);
+                    setNote(defaultNote);
+                  }}
+              >
+                <AddIcon />
+              </button>
+          )}
+        </form>
+      </div>
   );
 }
 

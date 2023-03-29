@@ -110,3 +110,246 @@ form.create-note button:hover {
   background: #eee;
   color: #fff;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header-right {
+  margin-right: 20px;
+}
+
+.header-right a {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.login-block {
+  max-width: 25%;
+  margin: 0 auto;
+}
+
+#password-group {
+  margin-bottom: 20px;
+}
+
+.login-block label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-block input[type="email"],
+.login-block input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.login-block button[type="submit"] {
+  background-color: #f5ba13;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.login-block h2 {
+  text-align: center;
+}
+
+
+.signup-link a {
+  color: #f5ba13;
+  font-size: 14px;
+}
+
+.formconnexion {
+  background-color: white;
+  padding: 20px;
+}
+
+.signup-block {
+  max-width: 25%;
+  margin: 0 auto;
+}
+
+#password-group {
+  margin-bottom: 20px;
+}
+
+.signup-block label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.signup-block input[type="text"],
+.signup-block input[type="email"],
+.signup-block input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.signup-block button[type="submit"] {
+  background-color: #f5ba13;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.signup-block h2 {
+  text-align: center;
+}
+
+.login-link a {
+  color: #f5ba13;
+  font-size: 14px;
+}
+
+.forminscription {
+  background-color: white;
+  padding: 20px;
+}
+
+.a-link {
+  color: black;
+  text-decoration: none;
+  margin-right: 1rem;
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 6px;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 15px;
+}
+
+.a-link:hover {
+  color: #f5ba13;
+  padding: 6px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.btn-link {
+  color: black;
+  margin-right: 1rem;
+  padding: 6px;
+  border-radius: 4px;
+  border: 0px solid black;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 15px;
+}
+
+.btn-link:hover {
+  color: #f5ba13;
+  padding: 6px;
+  background-color: white;
+  font-weight: bold;
+}
+
+
+.authors-block {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.authors-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.authors-table th,
+.authors-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.authors-table th {
+  background-color: #f2f2f2;
+}
+
+.user-notes {
+  margin-top: 2rem;
+}
+
+.user-notes table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-notes table th,
+.user-notes table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-notes table th {
+  background-color: #f2f2f2;
+}
+
+h1.Authorstitle {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.authors-block {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  margin-bottom: 20px;
+}
+
+.user-info-block {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1.Authorstitle {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+h2,
+h3 {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+a.informationlink {
+  margin-left: 10px;
+}
