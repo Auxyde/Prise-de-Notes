@@ -19,18 +19,28 @@ function UserInfo() {
             <div className="user-info-block">
                 <h2>Information</h2>
                 <hr />
-                <p><strong>Nom:</strong> {user.lastName}</p>
-                <p><strong>Prénom:</strong> {user.firstName}</p>
-                <p><strong>Email:</strong> {user.email}</p>
+                <p>
+                    <strong>Nom:</strong> {user.lastName}
+                </p>
+                <p>
+                    <strong>Prénom:</strong> {user.firstName}
+                </p>
+                <p>
+                    <strong>Email:</strong> {user.email}
+                </p>
                 <h2>Activités</h2>
                 <hr />
                 <p>
                     <strong>Articles:</strong>
-                    <a className="informationlink" href="/mynotes">{user.myNotes}{" "}</a>
+                    <a className="informationlink" href="/mynotes">
+                        {user.myNotes}{" "}
+                    </a>
                 </p>
                 <p>
                     <strong>Total:</strong>
-                    <a className="informationlink" href="/allnotes">{user.totalNotes}{" "}</a>
+                    <a className="informationlink" href="/allnotes">
+                        {user.totalNotes}{" "}
+                    </a>
                 </p>
                 <h2>Token</h2>
                 <hr />

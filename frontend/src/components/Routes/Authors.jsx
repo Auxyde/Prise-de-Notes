@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header";
 import Footer from "../Footer";
+import DataTable from 'react-data-table-component';
 
 function Authors() {
     const users = [
@@ -19,8 +20,6 @@ function Authors() {
                     content: "- Acheter produit" +
                         "- Je sais pas" +
                         "Pourquoi pas",
-
-
                 },
             ],
         },
@@ -33,52 +32,64 @@ function Authors() {
         setSelectedUser(user);
     }
 
+    const columns = [
+        {
+            name: 'Titre',
+            selector: 'title',
+            sortable: true,
+        },
+        {
+            name: 'Contenu',
+            selector: 'content',
+            sortable: true,
+        },
+    ];
+
+    const data = selectedUser ? selectedUser.notes : [];
+
     return (
         <div>
             <Header />
             <h1 className="Authorstitle">Les auteurs</h1>
             <div className="authors-block">
-                <table className="authors-table">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Mail</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td>
-                                <button onClick={() => handleUserClick(user)}>Notes</button>
-                            </td>
-                            <td>{user.lastName}</td>
-                            <td>{user.firstName}</td>
-                            <td>{user.email}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+                <DataTable
+                    title="Auteurs"
+                    columns={[
+                        {
+                            name: '',
+                            cell: row => <button onClick={() => handleUserClick(row)}>Notes</button>,
+                            button: true,
+                        },
+                        {
+                            name: 'Nom',
+                            selector: 'lastName',
+                            sortable: true,
+                        },
+                        {
+                            name: 'Prénom',
+                            selector: 'firstName',
+                            sortable: true,
+                        },
+                        {
+                            name: 'Email',
+                            selector: 'email',
+                            sortable: true,
+                        },
+                    ]}
+                    data={users}
+                    striped
+                    highlightOnHover
+                />
                 {selectedUser && (
                     <div className="user-notes">
                         <h3>Notes de {selectedUser.firstName} {selectedUser.lastName}</h3>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Titre</th>
-                                <th>Contenu</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {selectedUser.notes.map((note, index) => (
-                                <tr key={index}>
-                                    <td>{note.title}</td>
-                                    <td>{note.content}</td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
+                        <DataTable
+                            title="Notes"
+                            columns={columns}
+                            data={data}
+                            striped
+                            highlightOnHover
+                        />
                     </div>
                 )}
             </div>
