@@ -136,6 +136,7 @@ form.create-note button:hover {
 .noteAuthor p {
   color: #f5ba13;
 }
+
 form.login button {
   position: absolute;
   right: 18px;
@@ -201,4 +202,15 @@ main > .content .information a {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+.author:hover{
+
+}
+
+.note .actionLeft{
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  margin-bottom: 3px;
 }
