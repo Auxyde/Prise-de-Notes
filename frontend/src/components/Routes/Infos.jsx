@@ -30,16 +30,16 @@ function UserInfo() {
                 </p>
                 <h2>Activités</h2>
                 <hr />
-                <p>
-                    <strong>Articles:</strong>
+                <p className="information">
+                    <strong>Articles:</strong>{" "}
                     <a className="informationlink" href="/mynotes">
-                        {user.myNotes}{" "}
+                        <span className="nbarticle">{user.myNotes}</span>
                     </a>
                 </p>
-                <p>
-                    <strong>Total:</strong>
+                <p className="information">
+                    <strong>Total:</strong>{" "}
                     <a className="informationlink" href="/allnotes">
-                        {user.totalNotes}{" "}
+                        <span className="nbarticle">{user.totalNotes}</span>
                     </a>
                 </p>
                 <h2>Token</h2>
