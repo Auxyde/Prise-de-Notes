@@ -130,6 +130,7 @@ header {
 .login-block {
   max-width: 25%;
   margin: 0 auto;
+
 }
 
 #password-group {
@@ -350,6 +351,12 @@ hr {
   margin-bottom: 20px;
 }
 
-a.informationlink {
-  margin-left: 10px;
+.information {
+  display: inline-block;
+  padding-right: 100px; /* pour ajouter de l'espace entre les deux éléments */
+
+}
+
+p.nbarticle{
+  color: #f5ba13;
 }
