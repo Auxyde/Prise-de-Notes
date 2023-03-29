@@ -82,16 +82,16 @@ const auth_user = (req, res) => {
 const get_users = (req, res) =>{
     connectDB((cnx) => {
         User.find()
-        .then((result) => {
-            closeDB();
-            console.log(result);
-            res.status(200).json(result);
-        })
-        .catch((err) => {
-            closeDB();
-            console.log("Crashed")
-            res.status(204).json(err);
-        });
+            .then((result) => {
+                closeDB();
+                console.log(result);
+                res.status(200).json(result);
+            })
+            .catch((err) => {
+                closeDB();
+                console.log("Crashed")
+                res.status(204).json(err);
+            });
     });
 };
 
@@ -127,7 +127,7 @@ const get_user = (req, res) => {
                 res.status(204).json(err);
 
             });
-        })
+    })
 };
 
 //Liste des notes d’un auteur
@@ -136,10 +136,74 @@ const get_user_notes = (req, res) => {
     //TODO
 };
 
+//Modification utilisateur
+const update_user = (req, res) => {
+    try {
+        const { name, firstname, password } = req.body;
+        const { id } = req.params;
+
+        connectDB((cnx) => {
+            User.findByIdAndUpdate(
+                id,
+                { name, firstname, password },
+                { new: true }
+            )
+                .then((user) => {
+                    if (!user) {
+                        let obj = {
+                            success: false,
+                            message: "L'utilisateur n'existe pas",
+                        };
+                        res.status(404).json(obj);
+                    } else {
+                        //On supprime le mdp
+                        const { password, ...wResult } = user._doc;
+                        wResult.accessToken = jwtSign(wResult.mail);
+                        res.status(200).json(wResult);
+                    }
+                })
+                .catch((err) => {
+                    let obj = {
+                        success: false,
+                        message: err.message,
+                    };
+                    res.status(500).json(obj);
+                })
+                .finally(() => closeDB());
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
+};
+
+//Suppression utilisateur
+const delete_user = (req, res) =>{
+    const { id } = req.params;
+
+    connectDB((cnx) => {
+        User.findByIdAndDelete(id)
+            .then((result) => {
+                closeDB();
+                if (!result) {
+                    res.status(404).json({ success: false, message: "Utilisateur introuvable" });
+                } else {
+                    res.status(200).json({ success: true, message: "Utilisateur supprimé avec succès" });
+                }
+            })
+            .catch((err) => {
+                closeDB();
+                res.status(500).json({ success: false, message: "Erreur lors de la suppression de l'utilisateur" });
+            });
+    });
+};
+
+
 module.exports = {
     insert_user,
     auth_user,
     get_users,
     get_user,
     get_user_notes,
+    update_user,
+    delete_user
 };

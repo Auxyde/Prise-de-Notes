@@ -26,12 +26,6 @@ function Authors() {
         //...
     ];
 
-    const [selectedUser, setSelectedUser] = React.useState(null);
-
-    function handleUserClick(user) {
-        setSelectedUser(user);
-    }
-
     const columns = [
         {
             name: 'Titre',
@@ -45,7 +39,18 @@ function Authors() {
         },
     ];
 
-    const data = selectedUser ? selectedUser.notes : [];
+    const ExpandedComponent = ({ data }) => (
+        <div className="user-notes">
+            <h3>Notes de {data.firstName} {data.lastName}</h3>
+            <DataTable
+                title="Notes"
+                columns={columns}
+                data={data.notes}
+                striped
+                highlightOnHover
+            />
+        </div>
+    );
 
     return (
         <div>
@@ -55,11 +60,6 @@ function Authors() {
                 <DataTable
                     title="Auteurs"
                     columns={[
-                        {
-                            name: '',
-                            cell: row => <button onClick={() => handleUserClick(row)}>Notes</button>,
-                            button: true,
-                        },
                         {
                             name: 'Nom',
                             selector: 'lastName',
@@ -79,19 +79,9 @@ function Authors() {
                     data={users}
                     striped
                     highlightOnHover
+                    expandableRows
+                    expandableRowsComponent={ExpandedComponent}
                 />
-                {selectedUser && (
-                    <div className="user-notes">
-                        <h3>Notes de {selectedUser.firstName} {selectedUser.lastName}</h3>
-                        <DataTable
-                            title="Notes"
-                            columns={columns}
-                            data={data}
-                            striped
-                            highlightOnHover
-                        />
-                    </div>
-                )}
             </div>
             <Footer />
         </div>

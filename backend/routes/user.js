@@ -11,7 +11,10 @@ router.get("/:val", Users.get_user); // Recherche d’un utilisateur
 router.get("/notes/:val", Users.get_user_notes); // Liste des notes d’un auteur
 router.post("/", Users.insert_user); // creation utilisateur
 router.post("/auth", Users.auth_user); //authentification
+router.patch("/:id", jwtCheck, Users.update_user); //modification utilisateur
+router.delete("/:id", Users.delete_user); //suppression utilisateur
 /***************************************/
+
 router.use((req, res) => {
   res.status(404);
   res.json({
