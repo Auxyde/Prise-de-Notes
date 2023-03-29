@@ -33,6 +33,14 @@ function App() {
         });
     }
 
+    function detailNote(itemId) {
+        console.log("Detail de la note")
+    }
+
+    function editNote(itemId) {
+        console.log("Edit la note")
+    }
+
     function connection() {
         setIsConnected(!isConnected);
     }
@@ -49,6 +57,9 @@ function App() {
                         title={note.title}
                         content={note.content}
                         onDel={delNote}
+                        onDetails={detailNote}
+                        onEdit={editNote}
+                        author="Moi"
                     />
                 );
             })}
