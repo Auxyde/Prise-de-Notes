@@ -258,3 +258,67 @@ header {
   background-color: white;
   font-weight: bold;
 }
+
+
+.authors-block {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.authors-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.authors-table th,
+.authors-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.authors-table th {
+  background-color: #f2f2f2;
+}
+
+.user-notes {
+  margin-top: 2rem;
+}
+
+.user-notes table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-notes table th,
+.user-notes table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-notes table th {
+  background-color: #f2f2f2;
+}
+
+h1.Authorstitle {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.authors-block {
+  background-color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 4px;
+  width: 80%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  margin-bottom: 20px;
+}
