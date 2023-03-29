@@ -19,10 +19,10 @@ function Header(props) {
                     &nbsp;Notepad
                 </h1>
                 <div>
-                    <NavLink className="btn-link" to={"/mynotes"}>Mes Notes</NavLink>
-                    <NavLink className="btn-link" to={"/allnotes"}>Toutes les Note</NavLink>
-                    <NavLink className="btn-link" to={"/authors"}>Auteurs</NavLink>
-                    <NavLink className="btn-link" to={"/infos"}>Mes Informations</NavLink>
+                    <NavLink className="a-link" to={"/mynotes"}>Mes Notes</NavLink>
+                    <NavLink className="a-link" to={"/allnotes"}>Toutes les Note</NavLink>
+                    <NavLink className="a-link" to={"/authors"}>Auteurs</NavLink>
+                    <NavLink className="a-link" to={"/infos"}>Mes Informations</NavLink>
                 </div>
                 <div className="header-right">
                     <button className="btn-link" onClick={compute}>Déconnexion</button>
