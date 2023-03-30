@@ -1,6 +1,8 @@
 const { connectDB, closeDB } = require("../db/conn");
 const Note = require("../models/Note");
+const User = require("../models/User");
 const { jwtSign } = require("../secure");
+const { get_user } = require("./user");
 
 //Liste de toutes les notes
 // triées par title
@@ -9,12 +11,10 @@ const get_notes = function (req, res) {
         Note.find()
             .sort({ title: 1 })
             .then((data) => {
-                console.log(data);
                 closeDB();
                 res.status(200).json(data);
             })
             .catch((err) => {
-                console.log(err);
                 closeDB();
                 res.status(204).json(err);
             });
@@ -29,16 +29,103 @@ const get_notes_by_author = function (req, res) {
     //TODO
 }
 const insert_note = function (req, res) {
-    //TODO
+    try {
+        connectDB((cnx) => {
+            User.findOne({ mail: req.body.author })
+                .then((user) => {
+                    if (!user) {
+                        // Si l'utilisateur n'est pas trouvé, on retourne une erreur
+                        return res.status(400).json({ message: "Author email not found" });
+                    }
+
+                    // Si l'utilisateur est trouvé, on crée une nouvelle note
+                    const newNote = new Note({
+                        title: req.body.title,
+                        content: req.body.content,
+                        author: req.body.author,
+                    });
+
+                    // Enregistrez la nouvelle note dans la base de données
+                    newNote.save()
+                        .then((result) => {
+                            console.log(result.id);
+                            res.status(201).json(result);
+                            closeDB();
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            closeDB();
+                            res.status(500).json(err);
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                    closeDB();
+                    res.status(500).json(err);
+                });
+        });
+    } catch (error) {
+        res.status(204).json(error);
+    }
 }
 
 const update_note = function (req, res) {
-    //TODO
+    try {
+        const {id} = req.params;
+        const {title, content} = req.body;
+
+        connectDB((cnx) => {
+            Note.findByIdAndUpdate(
+                id,
+                {title, content},
+                {new: true}
+            )
+                .then((note) => {
+                    if (!note) {
+                        let obj = {
+                            success: false,
+                            message: "La note n'existe pas",
+                        };
+                        res.status(404).json(obj);
+                    } else {
+                        res.status(200).json(note);
+                    }
+                })
+                .catch((err) => {
+                    let obj = {
+                        success: false,
+                        message: err.message,
+                    };
+                    res.status(500).json(obj);
+                })
+                .finally(() => closeDB());
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
 }
 
 const delete_note = function (req, res) {
-    //TODO
-}
+    const { id } = req.params;
+    console.log(id);
+
+    connectDB((cnx) => {
+        Note.findByIdAndDelete(id)
+            .then((result) => {
+                if (!result) {
+                    res.status(404).json({ success: false, message: "Note introuvable" });
+                } else {
+                    res.status(200).json({ success: true, message: "La note a été supprimée" });
+                }
+            })
+            .catch((err) => {
+                closeDB();
+                res.status(500).json({ success: false, message: "Erreur lors de la suppression de la note" });
+            });
+    });
+
+};
+
 
 module.exports = {
     get_notes,
