@@ -21,12 +21,73 @@ const get_notes = function (req, res) {
     });
 }
 
+// Détail d‘une note à partir de
+// son _id ou son title
 const get_note = function (req, res) {
-    //TODO
+    const val = req.params.val;
+    const query = {}
+
+    if (val.match(/^[0-9a-fA-F]{24}$/)) {
+        query._id = val;
+    }
+    else {
+        query.title = new RegExp(val, "i");
+    }
+
+    connectDB((cnx) => {
+        Note.findOne(query)
+            .then((data) => {
+                console.log(data);
+                closeDB();
+                res.status(200).json(data);
+            })
+            .catch((err) => {
+                console.log(err);
+                closeDB();
+                res.status(204).json(err);
+            });
+    });
 }
 
+// Liste des notes d’un auteur à
+// partir de son _id
+// Si le nom ou le prénom de l'auteur correspond à l'id de l'utilisateur ou que c'est son mail
+// Ou si c'est directement son id
 const get_notes_by_author = function (req, res) {
-    //TODO
+    const User = require("../models/User");
+    const val = req.params.val;
+    let user = {};
+
+    //Cherche l'utilisateur correspondant à l'id
+    connectDB((cnx) => {
+        User.find({_id : val})
+            .then((data) => {
+                user = data;
+                closeDB();
+            })
+            .catch((err) => {
+                console.log(err);
+                closeDB();
+                res.status(204).json(err);
+            })
+    })
+
+    //Cherche les notes correspondant à l'utilisateur en fonction de soi son nom, prénom ou mail ou son id
+    connectDB((cnx) => {
+        Note.find({$or: [{author : user.name}, {author : user.firstname}, {author : user.mail}, {author : user._id}]})
+            .then((data) => {
+                console.log(data);
+                closeDB();
+                res.status(200).json(data);
+            })
+            .catch((err) => {
+                console.log(err);
+                closeDB();
+                res.status(204).json(err);
+            });
+
+    })
+
 }
 const insert_note = function (req, res) {
     try {
