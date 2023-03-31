@@ -1,14 +1,13 @@
 import React from "react";
 import {MdStickyNote2 as Icon} from "react-icons/md";
 import {NavLink} from "react-router-dom";
-import Button from "bootstrap/js/src/button";
 
 function Header(props) {
-    const isConnected = props.connection;
+    const isConnected = props.isConnected;
 
     function compute(event) {
         event.preventDefault();
-        props.connexionFct();
+        props.connect();
     }
 
     if (isConnected) {

@@ -4,7 +4,6 @@ import Footer from "../Footer";
 function Inscription() {
     return (
         <div>
-            <Header />
             <div className="signup-block">
                 <h2>Inscription</h2>
                 <form className="forminscription">
@@ -30,7 +29,6 @@ function Inscription() {
                     </div>
                 </form>
             </div>
-            <Footer />
         </div>
     );
 }

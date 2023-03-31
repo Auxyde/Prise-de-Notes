@@ -6,7 +6,6 @@ function Connexion() {
 
     return (
         <div>
-            <Header/>
             <h2 className="connexion">Connexion</h2>
             <div className="login-block">
                 <form className="formconnexion">
@@ -24,7 +23,6 @@ function Connexion() {
                     </div>
                 </form>
             </div>
-            <Footer/>
         </div>
 
     )

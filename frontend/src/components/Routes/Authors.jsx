@@ -54,7 +54,6 @@ function Authors() {
 
     return (
         <div>
-            <Header />
             <h1 className="Authorstitle">Les auteurs</h1>
             <div className="authors-block">
                 <DataTable
@@ -83,7 +82,6 @@ function Authors() {
                     expandableRowsComponent={ExpandedComponent}
                 />
             </div>
-            <Footer />
         </div>
     );
 }

@@ -14,7 +14,6 @@ function UserInfo() {
 
     return (
         <div>
-            <Header />
             <h1 className="Authorstitle">Informations</h1>
             <div className="user-info-block">
                 <h2>Information</h2>
@@ -46,7 +45,6 @@ function UserInfo() {
                 <hr />
                 {/* Code pour afficher le token */}
             </div>
-            <Footer />
         </div>
     );
 }
