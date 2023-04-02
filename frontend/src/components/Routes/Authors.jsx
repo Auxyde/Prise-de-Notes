@@ -1,40 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import DataTable from 'react-data-table-component';
+import axios from "axios";
 
 function Authors() {
-    const users = [
-        {
-            id: 1,
-            firstName: "MAXIME",
-            lastName: "PERRIER",
-            email: "maxime.perrier@example.com",
-            notes: [
-                {
-                    title: "Recette de chips",
-                    content: "patate frite oeeeeeeeeee",
-                },
-                {
-                    title: "Nettoyer la baraque",
-                    content: "- Acheter produit" +
-                        "- Je sais pas" +
-                        "Pourquoi pas",
-                },
-            ],
-        },
-        //...
-    ];
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/users")
+            .then(response => {
+                setUsers(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
     const columns = [
         {
-            name: 'Titre',
-            selector: 'title',
+            name: 'Nom',
+            selector: 'lastName',
             sortable: true,
         },
         {
-            name: 'Contenu',
-            selector: 'content',
+            name: 'Prénom',
+            selector: 'firstName',
+            sortable: true,
+        },
+        {
+            name: 'Email',
+            selector: 'email',
             sortable: true,
         },
     ];
@@ -44,7 +40,18 @@ function Authors() {
             <h3>Notes de {data.firstName} {data.lastName}</h3>
             <DataTable
                 title="Notes"
-                columns={columns}
+                columns={[
+                    {
+                        name: 'Titre',
+                        selector: 'title',
+                        sortable: true,
+                    },
+                    {
+                        name: 'Contenu',
+                        selector: 'content',
+                        sortable: true,
+                    },
+                ]}
                 data={data.notes}
                 striped
                 highlightOnHover
@@ -59,23 +66,7 @@ function Authors() {
             <div className="authors-block">
                 <DataTable
                     title="Auteurs"
-                    columns={[
-                        {
-                            name: 'Nom',
-                            selector: 'lastName',
-                            sortable: true,
-                        },
-                        {
-                            name: 'Prénom',
-                            selector: 'firstName',
-                            sortable: true,
-                        },
-                        {
-                            name: 'Email',
-                            selector: 'email',
-                            sortable: true,
-                        },
-                    ]}
+                    columns={columns}
                     data={users}
                     striped
                     highlightOnHover
