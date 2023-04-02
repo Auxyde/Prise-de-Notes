@@ -20,7 +20,7 @@ function Header(props) {
                 </h1>
                 <div>
                     <NavLink className="a-link" to={"/mynotes"}>Mes Notes</NavLink>
-                    <NavLink className="a-link" to={"/allnotes"}>Toutes les Note</NavLink>
+                    <NavLink className="a-link" to={"/allnotes"}>Toutes les Notes</NavLink>
                     <NavLink className="a-link" to={"/authors"}>Auteurs</NavLink>
                     <NavLink className="a-link" to={"/infos"}>Mes Informations</NavLink>
                 </div>
