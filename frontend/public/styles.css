@@ -371,3 +371,17 @@ hr {
   color: #f5ba13;
 }
 
+.detailed {
+  transform: scale(2);
+  transition: transform 0.5s ease-in-out;
+}
+
+.zoomIn {
+  transform: scale(1.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.zoomOut {
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
