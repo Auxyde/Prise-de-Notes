@@ -58,9 +58,10 @@ function App() {
                         content={note.content}
                         onDel={delNote}
                         onDetails={detailNote}
-                        onEdit={editNote}
+                        onSave={editNote}
                         author="Moi"
                     />
+
                 );
             })}
             <button className="button" onClick={connection}>
