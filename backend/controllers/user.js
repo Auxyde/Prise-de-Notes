@@ -1,6 +1,7 @@
 const { connectDB, closeDB } = require("../db/conn");
 const User = require("../models/User");
 const { jwtSign } = require("../secure");
+const Note = require("../models/Note");
 
 const insert_user = function (req, res) {
   try {
@@ -133,7 +134,40 @@ const get_user = (req, res) => {
 //Liste des notes d’un auteur
 // (_id)
 const get_user_notes = (req, res) => {
-    //TODO
+    id = req.params.id;
+    let {name, firstname, mail} = "";
+
+    const Note = require("../models/Note");
+
+    // On va chercher le nom, le prénom, et le mail de l'utilisateur
+    connectDB((cnx) => {
+        User.find({_id: id})
+            .then((result) => {
+                if (!result) {
+                    res.status(404).json({ success: false, message: "Utilisateur introuvable" });
+                } else {
+                    result.name ? name = result.name : null
+                    result.firstname ? firstname = result.firstname : null
+                    result.mail ? mail = result.mail : null
+
+                    Note.find({$or: [{author: id}, {author: mail}, {author: name}, {author: firstname}]})
+                        .then((result) => {
+                            closeDB();
+                            res.status(200).json(result);
+                        })
+                        .catch((err) => {
+                            closeDB();
+                            res.status(204).json(err);
+                        })
+                }
+            }
+            )
+            .catch((err) => {
+                closeDB();
+                res.status(500).json(err);
+            })
+    });
+
 };
 
 //Modification utilisateur

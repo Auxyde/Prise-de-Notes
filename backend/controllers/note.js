@@ -63,7 +63,17 @@ const get_notes_by_author = function (req, res) {
         User.find({_id : val})
             .then((data) => {
                 user = data;
-                closeDB();
+                Note.find({$or: [{author : user.name}, {author : user.firstname}, {author : user.mail}, {author : user._id}]})
+                    .then((data) => {
+                        console.log(data);
+                        closeDB();
+                        res.status(200).json(data);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        closeDB();
+                        res.status(204).json(err);
+                    });
             })
             .catch((err) => {
                 console.log(err);
@@ -72,21 +82,6 @@ const get_notes_by_author = function (req, res) {
             })
     })
 
-    //Cherche les notes correspondant à l'utilisateur en fonction de soi son nom, prénom ou mail ou son id
-    connectDB((cnx) => {
-        Note.find({$or: [{author : user.name}, {author : user.firstname}, {author : user.mail}, {author : user._id}]})
-            .then((data) => {
-                console.log(data);
-                closeDB();
-                res.status(200).json(data);
-            })
-            .catch((err) => {
-                console.log(err);
-                closeDB();
-                res.status(204).json(err);
-            });
-
-    })
 
 }
 const insert_note = function (req, res) {
