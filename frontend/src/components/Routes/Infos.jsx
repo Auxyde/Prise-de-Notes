@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
+import axios from "axios";
 
 function UserInfo() {
-    const user = {
-        id: 1,
-        firstName: "Maxime",
-        lastName: "Perrier",
-        email: "maxime.perrier@example.com",
-        myNotes: 5,
-        totalNotes: 20,
-    };
+    const [user, setUser] = useState({});
+    const [token, setToken] = useState("");
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:3001/users/1")
+            .then((response) => {
+                setUser(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    useEffect(() => {
+        axios
+            .post("http://localhost:3001/users/token", { userId: 1 })
+            .then((response) => {
+                setToken(response.data.token);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     return (
         <div>
@@ -44,7 +61,9 @@ function UserInfo() {
                 </p>
                 <h2>Token</h2>
                 <hr />
-                {/* Code pour afficher le token */}
+                <p>
+                    <strong>Token:</strong> {token}
+                </p>
             </div>
             <Footer />
         </div>
