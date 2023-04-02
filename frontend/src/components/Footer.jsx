@@ -3,7 +3,7 @@ const y = new Date().getFullYear();
 function Footer() {
   return (
     <footer>
-      <p>&copy; David MINGO {y}</p>
+      <p>&copy; Aurèle - Alexandre - Maxime - Audrey {y}</p>
     </footer>
   );
 }

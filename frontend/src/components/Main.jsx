@@ -15,6 +15,10 @@ function Main(props) {
         props.onAdd(note);
     }
 
+    function onDetail(itemId) {
+        props.onDetail(itemId);
+    }
+
     const notes = props.notes;
 
     return (
@@ -26,7 +30,8 @@ function Main(props) {
                         id={index}
                         title={note.title}
                         content={note.content}
-                        onDel={() => delNote(index)}
+                        onDel={delNote}
+                        onDetail={onDetail}
                         author="Moi"
                     />
                 );

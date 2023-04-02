@@ -11,22 +11,31 @@ function Note(props) {
         props.onDel(props.id);
     }
 
+    function handleEdit() {
+        props.onEdit(props.id);
+    }
+
+    function handleDetails() {
+        props.onDetail(props.id);
+    }
+
     return (
         <div className="note">
             <h1>{props.title}</h1>
             <AuthorIcon className="author" title={"Author : " + props.author}/>
             <p>{props.content}</p>
+            <p>id : {props.id}</p>
             <div className="action">
-                <button id={props.id} onClick={handleDel}>
+                <button onClick={handleDel}>
                     <DeleteIcon/>
                 </button>
                 <a href="/editnote">
-                    <button id={props.id}>
+                    <button onClick={handleEdit}>
                         <EditIcon/>
                     </button>
                 </a>
                 <a href="/details">
-                    <button className="actionLeft" id={props.id}>
+                    <button className="actionLeft" onClick={handleDetails}>
                         <SearchIcon/>
                     </button>
                 </a>
