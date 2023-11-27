@@ -12,26 +12,23 @@ Responsive Design: Accessible on various devices.
 
 ## Installation
 Clone the repository:
+
 `bash
 git clone https://github.com/Auxyde/Prise-de-Notes.git`
+
 Navigate to the project directory:
 `bash
 cd Prise-de-Notes`
+
 Install dependencies for both frontend and backend:
 `bash
-# Backend
 cd backend
 npm install
-
-# Frontend
 cd ../frontend
 npm install`
+
 Start the backend and frontend servers:
 `bash
-# Backend
-npm start
-
-# Frontend (in a new terminal)
 npm start`
 
 ## Usage
