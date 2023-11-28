@@ -4,8 +4,8 @@ Welcome to "Prise de Notes", a web-based note-taking application designed for ef
 ## Features
 User Authentication: Secure login and registration system.
 Note Management: Create, read, update, and delete notes.
-Responsive Design: Accessible on various devices.
-##Technologies
+Responsive Design: Accessible on various devices. 
+## Technologies
 - Frontend: React.js for a dynamic and responsive user interface.
 - Backend: Node.js with Express for server-side logic.
 - Database: MongoDB for storing user and note data.
